@@ -1,0 +1,16 @@
+//server
+//环境
+sudo apt-get update && sudo apt-get install python-gevent python-pip -y
+sudo pip install shadowsocks && sudo apt-get install python-m2crypto
+//配置
+vi /etc/shadowsocks.json
+{
+    "server":"23.83.248.207",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"63678920",
+    "timeout":600,
+    "method":"aes-256-cfb"
+}
+启动 ssserver -c /etc/shadowsocks.json -d start
+停止 ssserver -c /etc/shadowsocks.json -d stop
