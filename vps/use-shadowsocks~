@@ -5,10 +5,10 @@ sudo pip install shadowsocks && sudo apt-get install python-m2crypto
 //配置
 vi /etc/shadowsocks.json
 {
-    "server":"23.83.248.207",
+    "server":"ipdress",
     "server_port":8388,
     "local_port":1080,
-    "password":"63678920",
+    "password":"password",
     "timeout":600,
     "method":"aes-256-cfb"
 }
