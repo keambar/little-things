@@ -16,6 +16,7 @@ vi /etc/shadowsocks.json
 停止 ssserver -c /etc/shadowsocks.json -d stop
 //clinet 配置相同
 启动 sslocal -c /etc/shadowsocks.json
-
+//查看连接ip
+netstat -tun|grep 8388|sort|awk '{print $5}'|cut -d : -f 1|uniq 
 
 
