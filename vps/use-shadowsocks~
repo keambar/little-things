@@ -14,8 +14,14 @@ vi /etc/shadowsocks.json
 }
 启动 ssserver -c /etc/shadowsocks.json -d start
 停止 ssserver -c /etc/shadowsocks.json -d stop
-//clinet 配置相同
-启动 sslocal -c /etc/shadowsocks.json
-
+//clinet 配置
+{
+    "server":"23.83.248.207",
+    "server_port":8388,
+    "local_port":1080,
+    "password":"63678920",
+    "timeout":600,
+    "method":"aes-256-cfb"
+}
 
 
