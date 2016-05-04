@@ -8,28 +8,29 @@ make
 cd ../libfree 
 make 
 
-//
-我在这里出错:
-gcc -I../lib -g -O2 -D_REENTRANT -Wall   -c -o inet_ntop.o inet_ntop.c
-inet_ntop.c: In function ‘inet_ntop’:
-inet_ntop.c:60:9: error: argument ‘size’ doesn’t match prototype
-/usr/include/arpa/inet.h:65:22: error: prototype declaration
-make: *** [inet_ntop.o] Error 1
+/*
+	我在这里出错:
+	gcc -I../lib -g -O2 -D_REENTRANT -Wall   -c -o inet_ntop.o inet_ntop.c
+	inet_ntop.c: In function ‘inet_ntop’:
+	inet_ntop.c:60:9: error: argument ‘size’ doesn’t match prototype
+	/usr/include/arpa/inet.h:65:22: error: prototype declaration
+	make: *** [inet_ntop.o] Error 1
 
-经过查询inet_ntop.c 和 inet.h 文件发现在头文件中inet_ntop的原型声明与inet_ntop.c中的该函数实现原型的第三个参数类型不一致
+	经过查询inet_ntop.c 和 inet.h 文件发现在头文件中inet_ntop的原型声明与inet_ntop.c中的该函数实现原型的第三个参数类型不一致
 
-inet.h 和 inet_ntop.c中的函数原型如下：
+	inet.h 和 inet_ntop.c中的函数原型如下：
 
-//inet.h
-__const char *inet_ntop (int __af, __const void *__restrict __cp, char *__restrict __buf, socklen_t __len) __THROW;
-//inet_ntop.c
-const char *
-inet_ntop(int af, const void *src, char *dst, size_t size);
-其中第三个参数类型分别为socklen_t和size_t，解决方案为在inet_ntop.c中加入以下代码：
+	//inet.h
+	__const char *inet_ntop (int __af, __const void *__restrict __cp, char *__restrict __buf, socklen_t __len) __THROW;
 
-#define size_t socklen_t
+	//inet_ntop.c
+	const char *inet_ntop(int af, const void *src, char *dst, size_t size);
 
-//==========
+	其中第三个参数类型分别为socklen_t和size_t，解决方案为在inet_ntop.c中加入以下代码：
+
+	#define size_t socklen_t
+
+*/
   
 cd ../libroute
 make //这一步可能会出错，可忽略，只是表示你的系统不支持 4.4BSD，并不影响对该书的学习
