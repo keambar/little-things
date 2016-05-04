@@ -1,0 +1,16 @@
+//下载地址 http://www.unpbook.com
+//=====进入下载的unpv13e目录
+./configure 
+
+cd lib 
+make 
+
+cd ../libfree 
+make 
+  
+cd ../libroute
+make //这一步可能会出错，可忽略，只是表示你的系统不支持 4.4BSD，并不影响对该书的学习
+  
+cd ../libgai 
+make 
+
