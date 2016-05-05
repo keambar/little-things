@@ -52,5 +52,5 @@ gcc daytimetcpsrv.c -o daytimetcpsrv -lunp
 //运行时需使用sudo
 sudo ./daytimetcpsrv
 //运行客户程序
-gcc daytimetcpcli.c -o daytimetcpcli -lunp 
+daytimetcpcli 127.0.0.1 
 
